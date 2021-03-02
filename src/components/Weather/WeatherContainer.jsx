@@ -1,23 +1,18 @@
 import React, { useEffect } from 'react'
-import s from './Weather.module.css'
 import { connect } from 'react-redux'
 import Weather from './Weather'
 import { getInfoWeatherTC } from '../../redux/weather.reducer'
 
 export const WeatherContainer = (props) => {
-   useEffect(() => {
-      props.getInfoWeatherTC()
-   }, [])
-   console.log(props)
    return (
       <>
-         <Weather />
+         <Weather getInfoWeatherTC={props.getInfoWeatherTC} />
       </>
    )
 }
 const mapDispatchToProps = (dispatch) => {
    return {
-      getInfoWeatherTC: () => { dispatch(getInfoWeatherTC()) }
+      getInfoWeatherTC: (dataCity) => { dispatch(getInfoWeatherTC(dataCity)) }
    }
 }
 const mapStateToProps = (state) => {
