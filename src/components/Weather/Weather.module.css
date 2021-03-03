@@ -26,10 +26,25 @@
    display: flex;
 }
 .city__item {
+   position: relative;
+   top:0;
    border:1px solid #dddddd;
    width:16.6%;
    padding: 1.5em 0em 0em 0em;
    border-radius: 1.2em;
+   text-decoration: none;
+   transition-duration: 500ms;
+   transition-property: top;
+}
+.city__item:hover {
+   box-shadow: 0em 0em 1em grey;
+   position: relative;
+   top:-0.5em;
+}
+.city__active {
+   box-shadow: 0em 0em 1em grey;
+   position: relative;
+   top:-0.5em;
 }
 .city__name {
    color:#0e5eba;
@@ -60,9 +75,12 @@
 /*---Weather---*/
 
 .weather__body  {
-   background-color: #e6e6e6;
+   background-color: white;
    padding: 1em;
-   border-radius: 0.5em;
+   border-radius: 0em 0em 0.5em 0.5em;
+   border:1px solid #dddddd;
+   border-top:none;
+   
 }
 .body__row {
    display: flex;

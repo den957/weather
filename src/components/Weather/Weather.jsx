@@ -3,14 +3,10 @@ import s from './Weather.module.css'
 import cn from 'classnames'
 import clouds from '../../assets/images/weather/clouds.png'
 import rain from '../../assets/images/weather/rain.png'
-import sunCloud from '../../assets/images/weather/sunAndcloud.png'
+import sunCloud from '../../assets/images/weather/sunCloud.png'
 import sun from '../../assets/images/weather/sun.png'
 
 const Weather = (props) => {
-   // convert Degrees kelvin to Degrees Celsius
-   const convert = (temp) => {
-      return Math.round(temp - 273.15)
-   }
    return (
       <>
          <div className={s.weather__body}>
@@ -34,21 +30,21 @@ const Weather = (props) => {
                      <div className={s.degreesBody__row}>
                         <div className={s.degreesBody__max}>
                            max
-                           <div>{convert(props.weather.main.temp_max)}°C</div>
+                           <div>{props.convert(props.weather.main.temp_max)}°C</div>
                         </div>
                         <div className={s.degreesBody__min}>
                            min
-                           <div>{convert(props.weather.main.temp_min)}°C</div>
+                           <div>{props.convert(props.weather.main.temp_min)}°C</div>
                         </div>
                      </div>
                   </div>
                </div>
                <div className={s.body__detail}>
                   <div className={cn(s.detailBody__temperature, s.detailBody__item)}>
-                     Temperature, °C <span>{convert(props.weather.main.temp)}°</span>
+                     Temperature, °C <span>{props.convert(props.weather.main.temp)}°</span>
                   </div>
                   <div className={cn(s.detailBody__feelsLike, s.detailBody__item)}>
-                     feels like <span>{convert(props.weather.main.feels_like)}°</span>
+                     feels like <span>{props.convert(props.weather.main.feels_like)}°</span>
                   </div>
                   <div className={cn(s.detailBody__pressure, s.detailBody__item)}>
                      Pressure, mm <span>{Math.round(props.weather.main.pressure * 0.750064) /*1 mbar = 0.750064 mmH*/}</span>
@@ -62,7 +58,6 @@ const Weather = (props) => {
                </div>
             </div>
          </div>
-
       </>
    )
 }
