@@ -10,11 +10,12 @@ import gdansk from '../../assets/images/city/gdansk.jpg'
 import krakow from '../../assets/images/city/krakow.jpg'
 import poznan from '../../assets/images/city/poznan.jpg'
 import wroclaw from '../../assets/images/city/wroclaw.jpg'
+import Preloader from '../Common/Preloader'
 
 export const WeatherContainer = (props) => {
    let cityLodz = 'Lodz'
    useEffect(() => {
-      props.getInfoWeatherTC(cityLodz)
+      //props.getInfoWeatherTC(cityLodz)
    }, [])
    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];;
    const newDate = new Date();
@@ -101,7 +102,7 @@ export const WeatherContainer = (props) => {
                      </div>
                   </div>
                   {!props.weather
-                     ? <div>Hello</div>
+                     ? <Preloader />
                      : <Weather weather={props.weather} />
                   }
                </section>
