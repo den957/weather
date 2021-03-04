@@ -5,7 +5,7 @@
    padding: 1em 0em;
 }
 .container {
-   width:58%;
+   width:800px;
    margin:0 auto;
 }
 .logo {
@@ -29,7 +29,7 @@
    position: relative;
    top:0;
    border:1px solid #dddddd;
-   width:16.6%;
+   width:16.7%;
    padding: 1.5em 0em 0em 0em;
    border-radius: 1.2em;
    text-decoration: none;
@@ -141,3 +141,14 @@
    font-size: 1.7rem;
 }
 
+/*---Media--*/
+@media (max-width:800px){
+   :root {
+      font-size: calc((1vw + 0.01em)*2);
+      overflow: hidden;
+    }
+    .container {
+      width:99%;
+      margin:0 auto;
+   }
+}
