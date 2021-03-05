@@ -21,13 +21,11 @@ const weatherReducer = (state = initialState, action) => {
 export const getInfoWeatherSuccess = (data) => ({ type: getInfoWeatherSuccessType, data })
 
 export const getInfoWeatherTC = (dataCity) => {
-   return (dispatch) => {
-      weatherApi.weatherInfo(dataCity)
-         .then((response) => {
-            if (response.statusText === 'OK') {
-               dispatch(getInfoWeatherSuccess(response.data))
-            }
-         })
+   return async (dispatch) => {
+      let data = await weatherApi.weatherInfo(dataCity)
+      if (data.statusText === 'OK') {
+         dispatch(getInfoWeatherSuccess(data.data))
+      }
    }
 }
 export default weatherReducer

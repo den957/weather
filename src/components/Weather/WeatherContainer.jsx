@@ -31,9 +31,6 @@ export const WeatherContainer = (props) => {
    const newDate = new Date();
    let date = `${months[newDate.getMonth()]} ${newDate.getDate() < 10 ? `0${newDate.getDate()}` : newDate.getDate()}`
    // convert Degrees kelvin to Degrees Celsius
-   const convert = (temp) => {
-      return Math.round(temp - 273.15)
-   }
    //add active class
    let addActiveClass = (id) => {
       city.map((el) => {
@@ -82,7 +79,7 @@ export const WeatherContainer = (props) => {
                   </div>
                   {!props.weather
                      ? <Preloader />
-                     : <Weather weather={props.weather} convert={convert} />
+                     : <Weather {...props.weather.main} speed={props.weather.wind.speed} all={props.weather.clouds.all} />
                   }
                </section>
             </div>
