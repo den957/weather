@@ -3,7 +3,7 @@ import './App.css'
 import { Redirect, Route } from 'react-router-dom'
 import WeatherContainer from './components/Weather/WeatherContainer'
 
-const App = (props) => {
+const App: React.FC = () => {
   return (
     <>
       <Redirect to='/lodz' />

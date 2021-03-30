@@ -6,8 +6,19 @@ import rain from '../../assets/images/weather/rain.png'
 import sunCloud from '../../assets/images/weather/sunCloud.png'
 import sun from '../../assets/images/weather/sun.png'
 
-const Weather = ({ humidity, temp, feels_like, pressure, temp_min, temp_max, ...props }) => {
-   const convert = (t) => {
+type PropsType = {
+   humidity: number,
+   temp: number,
+   feels_like: number,
+   pressure: number,
+   temp_min: number,
+   temp_max: number,
+   speed: number,
+   all: number
+}
+
+const Weather: React.FC<PropsType> = ({ humidity, temp, feels_like, pressure, temp_min, temp_max, speed, all }) => {
+   const convert = (t: number) => {
       return Math.round(t - 273.15)
    }
    return (
@@ -15,16 +26,16 @@ const Weather = ({ humidity, temp, feels_like, pressure, temp_min, temp_max, ...
          <div className={s.body__row}>
             <div className={s.body__info}>
                <div className={s.infoBody__image}>
-                  {props.all <= 25 &&
+                  {all <= 25 &&
                      <img src={sun} alt={''} />
                   }
-                  {props.all <= 50 && props.all > 25 &&
+                  {all <= 50 && all > 25 &&
                      <img src={sunCloud} alt={''} />
                   }
-                  {props.all <= 90 && props.all > 50 &&
+                  {all <= 90 && all > 50 &&
                      <img src={clouds} alt={''} />
                   }
-                  {props.all <= 100 && props.all > 90 &&
+                  {all <= 100 && all > 90 &&
                      <img src={rain} alt={''} />
                   }
                </div>
@@ -55,7 +66,7 @@ const Weather = ({ humidity, temp, feels_like, pressure, temp_min, temp_max, ...
                   Humidity, % <span>{humidity}</span>
                </div>
                <div className={cn(s.detailBody__speed, s.detailBody__item)}>
-                  Wind, kmh <span>{props.speed}</span>
+                  Wind, kmh <span>{speed}</span>
                </div>
             </div>
          </div>
