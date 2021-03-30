@@ -90,7 +90,6 @@ export const WeatherContainer: React.FC<PropsType> = ({ getInfoWeatherTC, match,
                         {cityArr}
                      </div>
                   </div>
-                  <Preloader />
                   {!props.weather
                      ? <Preloader />
                      : <Weather {...props.weather.main} speed={props.weather.wind.speed} all={props.weather.clouds.all} />
